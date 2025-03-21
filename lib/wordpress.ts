@@ -3,7 +3,17 @@
 // Types are imported from `wp.d.ts`
 
 import querystring from "query-string";
-import { revalidateTag } from "next/cache";
+// Import revalidateTag conditionally
+let revalidateTag: (tag: string) => void;
+try {
+  // This will only work in server components
+  revalidateTag = require("next/cache").revalidateTag;
+} catch (error) {
+  // Provide a fallback for client components
+  revalidateTag = (tag: string) => {
+    console.warn(`Cannot revalidate tag ${tag} in client component`);
+  };
+}
 
 import type {
   Post,
@@ -427,7 +437,11 @@ export async function searchAuthors(query: string): Promise<Author[]> {
 export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
   try {
     for (const tag of tags) {
-      revalidateTag(tag);
+      if (typeof revalidateTag === 'function') {
+        revalidateTag(tag);
+      } else {
+        console.warn(`Unable to revalidate tag: ${tag} - revalidateTag not available`);
+      }
     }
   } catch (error) {
     console.error("Failed to revalidate WordPress data:", error);

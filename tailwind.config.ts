@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
@@ -20,7 +19,22 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ['var(--font-hanken-grotesk)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        'hanken-grotesk': ['var(--font-hanken-grotesk)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        'outfit': ['var(--font-outfit)', 'system-ui', 'sans-serif'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            'h1, h2, h3, h4, h5, h6': {
+              fontFamily: 'var(--font-outfit)',
+              margin: '0',
+            },
+            p: {
+              fontFamily: 'var(--font-hanken-grotesk)',
+            },
+          },
+        },
       },
       colors: {
         border: "hsl(var(--border))",
@@ -78,7 +92,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography")
+  ],
 } satisfies Config;
 
 export default config;

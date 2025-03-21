@@ -1,0 +1,156 @@
+/* Post content styles */
+.post-content {
+  font-family: var(--font-hanken-grotesk);
+  font-size: 20px !important; /* Force 20px size */
+  font-weight: 200; /* extralight */
+  line-height: 1.6;
+  max-width: 85ch;
+  margin: 0 auto;
+}
+
+.post-content p, 
+.post-content li,
+.post-content ul,
+.post-content ol {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Robust drop cap that works with WP content */
+.post-content > p:first-of-type::first-letter,
+.post-content p:first-of-type::first-letter,
+.post-content .first-paragraph::first-letter {
+  float: left;
+  font-family: var(--font-hanken-grotesk);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  
+  /* Square background styling */
+  background-color: #d2f381;
+  color: #000;
+  padding: 0.5rem;
+  margin-right: 0.75rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  
+  /* Optional: slightly rounded corners */
+  border-radius: 4px;
+  
+  /* Make it a perfect square */
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+
+.post-content > p:first-of-type,
+.post-content p:first-of-type,
+.post-content .first-paragraph {
+  font-size: 20px; /* Match the main content font size */
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.post-content a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #d2f381;
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.post-content a:hover {
+  text-decoration-color: #000;
+}
+
+.post-content blockquote {
+  border-left: 0.25rem solid #d2f381;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+.post-content blockquote p {
+  color: #333;
+}
+
+/* Headings for better ToC */
+.post-content h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 100px; /* For smooth scrolling with ToC */
+}
+
+.post-content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 100px;
+}
+
+.post-content h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 100px;
+}
+
+/* For the full-width featured image */
+.post-hero {
+  position: relative;
+  width: 100%;
+  height: 50svh;
+}
+
+.post-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.post-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+
+.post-hero-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.post-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  max-width: 50rem;
+}
+
+.post-hero-date {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .post-hero-title {
+    font-size: 3.5rem;
+  }
+} 

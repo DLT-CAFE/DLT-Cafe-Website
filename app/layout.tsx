@@ -1,7 +1,10 @@
 import "./globals.css";
+import "../styles/post-content.css";
 
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Inter, Hanken_Grotesk, Outfit } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
+import localFont from 'next/font/local';
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
@@ -10,6 +13,9 @@ import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
+import { Footer } from './components/Footer';
+import { ThemeProvider as NextThemeProvider } from 'next-themes'
+import Navigation from './components/Navigation';
 
 import Balancer from "react-wrap-balancer";
 import Logo from "@/public/logo.svg";
@@ -18,15 +24,30 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-const font = FontSans({
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-hanken-grotesk",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-output",
+});
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
-  description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
+  title: "Domain of Limitless Talent Cafe",
+  description: "Venture Capital x Venture Studio reimagined with a fresh dose of creative and collective intelligence.",
   metadataBase: new URL(siteConfig.site_domain),
   alternates: {
     canonical: "/",
@@ -41,121 +62,32 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn("min-h-screen font-sans antialiased", font.variable)}>
+      <body className={cn(
+        "min-h-screen font-sans antialiased",
+        hankenGrotesk.variable,
+        outfit.variable,
+        spaceGrotesk.variable,
+        inter.variable,
+        "font-hanken-grotesk"
+      )}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
-          {children}
-          <Footer />
+          <NextThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={true}
+          >
+            <Navigation />
+            {children}
+            <Footer />
+            <Analytics />
+          </NextThemeProvider>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );
 }
-
-const Nav = ({ className, children, id }: NavProps) => {
-  return (
-    <nav
-      className={cn("sticky z-50 top-0 bg-background", "border-b", className)}
-      id={id}
-    >
-      <div
-        id="nav-container"
-        className="max-w-5xl mx-auto py-4 px-6 sm:px-8 flex justify-between items-center"
-      >
-        <Link
-          className="hover:opacity-75 transition-all flex gap-4 items-center"
-          href="/"
-        >
-          <Image
-            src={Logo}
-            alt="Logo"
-            loading="eager"
-            className="dark:invert"
-            width={42}
-            height={26.44}
-          ></Image>
-          <h2 className="text-sm">{siteConfig.site_name}</h2>
-        </Link>
-        {children}
-        <div className="flex items-center gap-2">
-          <div className="mx-2 hidden md:flex">
-            {Object.entries(mainMenu).map(([key, href]) => (
-              <Button key={href} asChild variant="ghost" size="sm">
-                <Link href={href}>
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </Link>
-              </Button>
-            ))}
-          </div>
-          <Button asChild className="hidden sm:flex">
-            <Link href="https://github.com/9d8dev/next-wp">Get Started</Link>
-          </Button>
-          <MobileNav />
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer>
-      <Section>
-        <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
-          <div className="flex flex-col gap-6 not-prose">
-            <Link href="/">
-              <h3 className="sr-only">{siteConfig.site_name}</h3>
-              <Image
-                src={Logo}
-                alt="Logo"
-                className="dark:invert"
-                width={42}
-                height={26.44}
-              ></Image>
-            </Link>
-            <p>
-              <Balancer>{siteConfig.site_description}</Balancer>
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <h5 className="font-medium text-base">Website</h5>
-            {Object.entries(mainMenu).map(([key, href]) => (
-              <Link
-                className="hover:underline underline-offset-4"
-                key={href}
-                href={href}
-              >
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </Link>
-            ))}
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <h5 className="font-medium text-base">Blog</h5>
-            {Object.entries(contentMenu).map(([key, href]) => (
-              <Link
-                className="hover:underline underline-offset-4"
-                key={href}
-                href={href}
-              >
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </Link>
-            ))}
-          </div>
-        </Container>
-        <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
-          <ThemeToggle />
-          <p className="text-muted-foreground">
-            &copy; <a href="https://9d8.dev">9d8</a>. All rights reserved.
-            2025-present.
-          </p>
-        </Container>
-      </Section>
-    </footer>
-  );
-};
