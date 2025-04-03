@@ -15,6 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
 import { Footer } from './components/Footer';
 import Navigation from './components/Navigation';
+import { LenisProvider } from './providers/LenisProvider';
 
 import Balancer from "react-wrap-balancer";
 import Logo from "@/public/logo.svg";
@@ -74,10 +75,12 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          <Navigation />
-          {children}
-          <Footer />
-          <Analytics />
+          <LenisProvider>
+            <Navigation />
+            {children}
+            <Footer />
+            <Analytics />
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>
