@@ -29,6 +29,11 @@ interface TableOfContentsProps {
    * The class name for the list
    */
   className?: string
+  /**
+   * The accent color for active items
+   * @default "#d2f381"
+   */
+  accentColor?: string
 }
 
 /**
@@ -39,6 +44,7 @@ export function TableOfContents({
   minLevel = 2,
   maxLevel = 4,
   className,
+  accentColor = "#d2f381",
 }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<TOCItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
@@ -133,11 +139,12 @@ export function TableOfContents({
   }
 
   return (
-    <nav className={cn('not-prose text-sm', className)}>
-      <ul className="space-y-2 text-muted-foreground">
+    <nav className={cn('not-prose', className)}>
+      <ul className="toc-list">
         {headings.map((heading) => (
           <li
             key={heading.id}
+            className="toc-list-item"
             style={{
               paddingLeft: `${(heading.level - minLevel) * 12}px`,
             }}
@@ -145,11 +152,12 @@ export function TableOfContents({
             <a
               href={`#${heading.id}`}
               className={cn(
-                'block py-1.5 border-l-2 pl-3 hover:text-foreground transition-colors',
-                activeId === heading.id 
-                  ? 'border-primary font-medium text-foreground' 
-                  : 'border-transparent text-muted-foreground'
+                'toc-link',
+                activeId === heading.id && 'is-active'
               )}
+              style={{
+                color: activeId === heading.id ? accentColor : undefined,
+              }}
               onClick={(e) => {
                 e.preventDefault()
                 const el = document.getElementById(heading.id)

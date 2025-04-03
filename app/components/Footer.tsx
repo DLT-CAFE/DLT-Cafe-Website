@@ -9,9 +9,10 @@ export function Footer() {
   return (
     <footer className="w-full bg-black text-white">
       <div className="max-w-[1440px] mx-auto px-4 py-20">
-        <div className="flex justify-between">
+        {/* Main Footer Content */}
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-0">
           {/* Logo Column */}
-          <div className="w-[340px]">
+          <div className="w-full lg:w-[340px] flex flex-col items-center lg:items-start text-center lg:text-left">
             <Image
               src="/images/dltcafe-venture-logo1.svg"
               alt="DLT Cafe Ventures"
@@ -23,7 +24,7 @@ export function Footer() {
               The world's first community powered venture studio.
             </p>
             {/* Social Icons */}
-            <div className="flex gap-6">
+            <div className="flex gap-6 mb-8 lg:mb-0">
               <Link href="#" className="text-white/60 hover:text-[#00E1AF]">
                 <TwitterIcon />
               </Link>
@@ -40,9 +41,9 @@ export function Footer() {
           </div>
 
           {/* Menu Columns Group */}
-          <div className="flex gap-24">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
             {/* Company Links */}
-            <div>
+            <div className="text-center lg:text-left">
               <h3 className="text-white mb-6 text-lg font-medium">Company</h3>
               <ul className="space-y-4">
                 {[
@@ -52,7 +53,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link 
                       href={item.href} 
-                      className="text-[17px] font-light text-white/80 hover:text-[#00E1AF] flex items-center group"
+                      className="text-[17px] font-light text-white/80 hover:text-[#00E1AF] flex items-center justify-center lg:justify-start group"
                     >
                       {item.name}
                       <ArrowUpRight 
@@ -65,7 +66,7 @@ export function Footer() {
             </div>
 
             {/* Programs Links */}
-            <div>
+            <div className="text-center lg:text-left">
               <h3 className="text-white mb-6 text-lg font-medium">Programs</h3>
               <ul className="space-y-4">
                 {[
@@ -77,7 +78,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link 
                       href={item.href} 
-                      className="text-[17px] font-light text-white/80 hover:text-[#00E1AF] flex items-center group"
+                      className="text-[17px] font-light text-white/80 hover:text-[#00E1AF] flex items-center justify-center lg:justify-start group"
                     >
                       {item.name}
                       <ArrowUpRight 
@@ -90,7 +91,7 @@ export function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div className="text-center lg:text-left">
               <h3 className="text-white mb-2 text-lg font-medium">Contact Us</h3>
               <div className="space-y-4">
                 <p className="text-[17px] font-light text-white/80">
@@ -99,10 +100,7 @@ export function Footer() {
                 <p className="text-[17px] font-light text-white/80">
                   Here East, <br/>Queen Elizabeth Olympic Park, <br/>London, E20 3BS
                 </p>
-                <div className="flex items-center gap-4">
-                 
-                </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-center lg:justify-start gap-4">
                   <ThemeToggle />
                 </div>
               </div>
@@ -111,8 +109,8 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-8 mt-16 border-t border-white/10 flex justify-between items-center">
-          <div className="flex items-center gap-2 text-[17px] font-light text-white/60">
+        <div className="pt-8 mt-16 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-0">
+          <div className="flex flex-col lg:flex-row items-center gap-2 text-[17px] font-light text-white/60 text-center lg:text-left">
             <p>© 2024 DLT Cafe Ltd.</p>
             <p>Trademarks and brands are the property of their respective owners.</p>
           </div>

@@ -24,7 +24,7 @@ const Navigation = ({ className, id }: NavProps) => {
     >
       <div
         id="nav-container"
-        className="max-w-[1220px] mx-auto py-6 px-4 flex justify-between items-center"
+        className="max-w-[1220px] mx-auto py-4 px-4 flex justify-between items-center"
       >
         <Link href="/" className="flex items-center">
           <Image
@@ -32,7 +32,7 @@ const Navigation = ({ className, id }: NavProps) => {
             alt="DLT Cafe Ventures"
             width={80}
             height={60}
-            className="w-[220px] h-auto"
+            className="w-[180px] h-auto"
             priority
           />
         </Link>

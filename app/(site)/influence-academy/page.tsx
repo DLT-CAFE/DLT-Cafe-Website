@@ -1,7 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Outfit } from 'next/font/google';
 import { FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { NewsletterForm } from '@/app/components/NewsletterForm';
+
+const outfit = Outfit({ subsets: ['latin'] });
 
 export default function InfluencerAcademyPage() {
   return (
@@ -46,7 +50,7 @@ export default function InfluencerAcademyPage() {
           {/* Right Column - Full Height/Width Image */}
           <div className="relative h-[50vh] lg:h-screen lg:min-h-[100svh] w-full order-first lg:order-last">
             <Image
-              src="/images/influencer-1.jpg"
+              src="/images/influencer-0.webp"
               alt="Influencer Academy"
               fill
               priority
@@ -86,6 +90,60 @@ export default function InfluencerAcademyPage() {
           </a>
         </div>
       </section>
+
+      {/* Spacer Div */}
+      <div className="h-[100px] w-full" id="section-spacer-1"></div>
+
+      {/* Bottom Section */}
+      <section className="py-16 relative">
+        {/* Texture Background with Elliptical Gradient Overlay */}
+        <div className="absolute inset-0 overflow-hidde nmy-80">
+          <div className="absolute inset-0 w-full h-full">
+            <Image
+              src="/images/texture-bg.jpg"
+              alt="Background Texture"
+              fill
+              className="object-cover"
+              style={{
+                objectPosition: 'center center'
+              }}
+            />
+          </div>
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,1) 70%)'
+            }}
+          ></div>
+        </div>
+        
+        <div className="max-w-[1220px] mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <p className="text-white/60 uppercase tracking-wider mb-4">DLT CAFE VENTURE STUDIO</p>
+            <div className="flex justify-center mb-4">
+              <div className="flex gap-1">
+                <span className="text-[#D2F381]">★</span>
+                <span className="text-[#D2F381]">★</span>
+                <span className="text-[#D2F381]">★</span>
+                <span className="text-[#D2F381]">★</span>
+              </div>
+            </div>
+            <h2 className={`${outfit.className} text-[52px] font-medium text-white`}>
+              Community, Innovation & Growth
+            </h2>
+          </div>
+           
+          {/* Newsletter Section */}
+          <div className="max-w-[600px] mx-auto text-center">
+            <NewsletterForm />
+          </div>
+              
+            </div>
+        
+      </section>
+
+      {/* Spacer Div */}
+      <div className="h-[100px] w-full" id="section-spacer-4"></div>
     </main>
   );
 } 

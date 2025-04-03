@@ -26,6 +26,9 @@ import { PostCard } from "@/components/posts/post-card";
 import { FilterPosts } from "@/components/posts/filter";
 import { SearchInput } from "@/components/posts/search-input";
 import { FeaturedPostsSlider } from "@/app/components/FeaturedPostsSlider";
+import { NewsletterForm } from '@/app/components/NewsletterForm';
+import { Outfit } from 'next/font/google';
+const outfit = Outfit({ subsets: ['latin'] });
 
 import type { Metadata } from "next";
 
@@ -148,6 +151,16 @@ export default async function Page({
       <Section>
         <Container>
           <div className="space-y-8">
+            {/* Header Section */}
+            <div className="text-center mb-8">
+              <h1 className={`${outfit.className} text-4xl md:text-5xl font-medium mb-4`}>
+                Latest Articles & Insights
+              </h1>
+              <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Explore our collection of articles, news, and insights about innovation, technology, and entrepreneurship.
+              </p>
+            </div>
+
             <div className="space-y-4">
               <SearchInput defaultValue={search} />
 
@@ -202,7 +215,60 @@ export default async function Page({
             )}
           </div>
         </Container>
+        
       </Section>
+            {/* Spacer Div */}
+      <div className="h-[200px] w-full" id="section-spacer-4"></div>
+
+{/* Bottom Section */}
+<section className="py-16 relative">
+  {/* Texture Background with Elliptical Gradient Overlay */}
+  <div className="absolute inset-0 overflow-hidde nmy-80">
+    <div className="absolute inset-0 w-full h-full">
+      <img
+        src="/images/texture-bg.jpg"
+        alt="Background Texture"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          objectPosition: 'center center'
+        }}
+      />
+    </div>
+    <div 
+      className="absolute inset-0 w-full h-full"
+      style={{
+        background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,1) 70%)'
+      }}
+    ></div>
+  </div>
+  
+  <div className="max-w-[1220px] mx-auto px-4 relative z-10">
+    <div className="text-center mb-16">
+      <p className="text-white/60 uppercase tracking-wider mb-4">DLT CAFE VENTURE STUDIO</p>
+      <div className="flex justify-center mb-4">
+        <div className="flex gap-1">
+          <span className="text-[#D2F381]">★</span>
+          <span className="text-[#D2F381]">★</span>
+          <span className="text-[#D2F381]">★</span>
+          <span className="text-[#D2F381]">★</span>
+        </div>
+      </div>
+      <h2 className={`${outfit.className} text-[52px] font-medium text-white`}>
+        Community, Innovation & Growth
+      </h2>
+    </div>
+     
+    {/* Newsletter Section */}
+    <div className="max-w-[600px] mx-auto text-center">
+      <NewsletterForm />
+    </div>
+  </div>
+</section>
+
+{/* Spacer Div */}
+<div className="h-[100px] w-full" id="section-spacer-4"></div> 
+
     </>
+    
   );
 }

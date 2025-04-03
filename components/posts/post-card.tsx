@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Post } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
+import { Spotlight } from "@/components/ui/spotlight";
 
 import {
   getFeaturedMediaById,
@@ -24,54 +25,63 @@ export async function PostCard({ post }: { post: Post }) {
     ? await getCategoryById(post.categories[0])
     : null;
 
-  return (
-    <Link
-      href={`/posts/${post.slug}`}
-      className={cn(
-        "border p-4 bg-accent/30 rounded-lg group flex justify-between flex-col not-prose gap-8",
-        "hover:bg-accent/75 transition-all"
-      )}
-    >
-      <div className="flex flex-col gap-4">
-        <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center bg-muted">
-          {media?.source_url ? (
-            <Image
-              className="h-full w-full object-cover"
-              src={media.source_url}
-              alt={post.title?.rendered || "Post thumbnail"}
-              width={400}
-              height={200}
-            />
-          ) : (
-            <div className="flex items-center justify-center w-full h-full text-muted-foreground">
-              No image available
-            </div>
-          )}
-        </div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: post.title?.rendered || "Untitled Post",
-          }}
-          className="text-xl text-primary font-medium group-hover:underline decoration-muted-foreground underline-offset-4 decoration-dotted transition-all"
-        ></div>
-        <div
-          className="text-sm"
-          dangerouslySetInnerHTML={{
-            __html: post.excerpt?.rendered
-              ? post.excerpt.rendered.split(" ").slice(0, 12).join(" ").trim() +
-                "..."
-              : "No excerpt available",
-          }}
-        ></div>
-      </div>
+  // Prepare title and excerpt for display
+  const titleHtml = post.title?.rendered || "Untitled Post";
+  const excerptHtml = post.excerpt?.rendered
+    ? post.excerpt.rendered.split(" ").slice(0, 12).join(" ").trim() + "..."
+    : "No excerpt available";
+  const categoryName = category?.name || "Uncategorized";
 
-      <div className="flex flex-col gap-4">
-        <hr />
-        <div className="flex justify-between items-center text-xs">
-          <p>{category?.name || "Uncategorized"}</p>
-          <p>{date}</p>
+  return (
+    <div className="relative group">
+      <Spotlight
+        className="from-[#d2f381]/20 via-[#d2f381]/10 to-transparent blur-3xl"
+        size={124}
+      />
+      <Link
+        href={`/posts/${post.slug}`}
+        className={cn(
+          "border p-4 bg-card rounded-lg flex justify-between flex-col not-prose gap-8",
+          "transition-all duration-200 hover:shadow-md hover:border-primary/20 w-full h-full"
+        )}
+      >
+        <div className="flex flex-col gap-4">
+          <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center bg-muted group-hover:border-primary/20 transition-all duration-200">
+            {media?.source_url ? (
+              <Image
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src={media.source_url}
+                alt={titleHtml.replace(/<[^>]*>/g, '')}
+                width={400}
+                height={200}
+              />
+            ) : (
+              <div className="flex items-center justify-center w-full h-full text-muted-foreground">
+                No image available
+              </div>
+            )}
+          </div>
+          <h3 
+            className="text-xl font-medium transition-colors duration-200 group-hover:text-[#d2f381]"
+            dangerouslySetInnerHTML={{ __html: titleHtml }}
+          />
+          <div 
+            className="text-sm text-muted-foreground"
+            dangerouslySetInnerHTML={{ __html: excerptHtml }}
+          />
         </div>
-      </div>
-    </Link>
+
+        <div className="flex flex-col gap-4">
+          <hr className="border-muted group-hover:border-primary/20 transition-colors duration-200" />
+          <div className="flex justify-between items-center text-xs">
+            <span 
+              className="px-2 py-1 bg-muted/50 rounded-full text-muted-foreground group-hover:bg-[#d2f381]/20 group-hover:text-[#d2f381] transition-colors duration-200"
+              dangerouslySetInnerHTML={{ __html: categoryName }}
+            />
+            <p>{date}</p>
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 }

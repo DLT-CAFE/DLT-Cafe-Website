@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Outfit } from 'next/font/google';
 import { FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { NewsletterForm } from '@/app/components/NewsletterForm';
 
 const outfit = Outfit({ subsets: ['latin'] });
 
@@ -137,37 +138,8 @@ export default function ContentFactoryPage() {
           </div>
            
           {/* Newsletter Section */}
-          <div className="max-w-[600px] mx-auto text-center ">
-            <h3 className={`${outfit.className} text-[28px] font-medium text-white mb-8`}>
-              Subscribe to our Newsletter
-            </h3>
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <input 
-                type="text" 
-                placeholder="Full Name" 
-                className="flex-1 bg-black/80 border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
-              />
-              <input 
-                type="email" 
-                placeholder="Email" 
-                className="flex-1 bg-black/80 border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <button 
-                type="submit" 
-                className="bg-[#D2F381] hover:bg-[#D2F381]/90 text-black font-medium py-3 px-8 rounded w-full md:w-auto transition-all"
-              >
-                Submit
-              </button>
-              
-              {/* Lightning Bolt Icon */}
-              <div className="mt-8">
-                <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.4142 0L0 20.1213H10.1213L8.48528 36L22.6274 15.8787H12.5061L13.4142 0Z" fill="#D2F381"/>
-                </svg>
-              </div>
-            </div>
+          <div className="max-w-[600px] mx-auto text-center">
+            <NewsletterForm />
           </div>
         </div>
       </section>

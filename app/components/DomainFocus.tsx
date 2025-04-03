@@ -29,14 +29,11 @@ export function DomainFocus() {
             transition={{ duration: 0.5 }}
           >
             <p className="text-[23px] font-extralight text-white/100 leading-[1.4] mb-6">
-              Our venture building and investments are centered around the
-              convergence of the <span className="text-white font-normal">Sports, Media, Entertainment, Lifestyle,
-              and Technology (SMELT).</span>
+              Our venture building and investments are at the intersection of <span className="text-white font-normal">Sports, Media, Entertainment, Lifestyle,
+              and Technology</span> - a convergence we call <strong>SMELT</strong>
             </p>
             <p className="text-[23px] font-extralight text-white/80 leading-[1.4]">
-              Each of these sector is experiencing high growth, technological
-              advancements and shifting consumer behaviors creating fertile
-              ground for innovation and disruption.
+            These culturally charged sectors are being redefined by shifts in consumer behavior, exponential tech, and new forms of digital ownership, identity, and interaction. This creates a rich environment for scalable, disruptive ventures.
             </p>
           </motion.div>
 
@@ -48,14 +45,16 @@ export function DomainFocus() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <p className="text-[23px] font-extralight text-white/80 leading-[1.4]">
-              To address the emerging needs and trends of each domain, we
-              have developed a set of criteria and principles that enable us
-              to quickly identify opportunities and capitalize on the gaps with
-              a robust pipeline of scalable ventures that come with pre-
-              launch product-market fit already integrated.
+            While SMELT is our core focus, we also pursue Special Operations — high-conviction, out-of-scope plays where we have strategic edge. These include category-agnostic SaaS platforms, marketplaces, and productivity tools aligned with our broader thesis on leverage, network effects, and future infrastructure.
+            </p>
+            <p className="text-[23px] font-extralight text-white/80 leading-[1.4]">
+            Our venture framework is designed to identify and launch opportunities with built-in distribution, product-market alignment, and cultural relevance from day one.
             </p>
           </motion.div>
         </div>
+        <a href="/investment-thesis" className="text-[23px] font-bold text-white/80 leading-[1.4] inline-flex items-center transition-all duration-300 ease-in-out hover:text-[#D2F381] mb-16">
+          → Learn more about our investment thesis and criteria.
+        </a>
 
         {/* SMELT Gallery Section */}
         <motion.div

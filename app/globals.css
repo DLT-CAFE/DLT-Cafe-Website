@@ -119,3 +119,115 @@
     /* Firefox */
   }
 }
+
+/* Custom reCAPTCHA wrapper styles */
+.recaptcha-wrapper {
+  position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(210, 243, 129, 0.2);
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.recaptcha-wrapper:hover {
+  border-color: rgba(210, 243, 129, 0.4);
+  box-shadow: 0 0 15px rgba(210, 243, 129, 0.1);
+}
+
+/* Add a subtle glow effect */
+.recaptcha-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, rgba(210, 243, 129, 0.1), transparent);
+  border-radius: 9px;
+  z-index: -1;
+}
+
+/* TagCloud styles */
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tagcloud {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: var(--font-outfit);
+  position: relative;
+  z-index: 20;
+}
+
+.tagcloud--item {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-transform: uppercase;
+}
+
+.tagcloud--item:nth-child(3n+1) {
+  color: #d2f381 !important;
+}
+
+/* Center element styles */
+.cloud-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.center-content {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  border: 1px solid rgba(210, 243, 129, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.pulse-circle {
+  width: 12px;
+  height: 12px;
+  background: #d2f381;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-circle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #d2f381;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Inter, Hanken_Grotesk, Outfit } from "next/font/google";
 import { Space_Grotesk } from "next/font/google";
 import localFont from 'next/font/local';
-import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeProvider } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -14,7 +14,6 @@ import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
 import { Footer } from './components/Footer';
-import { ThemeProvider as NextThemeProvider } from 'next-themes'
 import Navigation from './components/Navigation';
 
 import Balancer from "react-wrap-balancer";
@@ -73,19 +72,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
+          enableSystem={false}
         >
-          <NextThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={true}
-          >
-            <Navigation />
-            {children}
-            <Footer />
-            <Analytics />
-          </NextThemeProvider>
+          <Navigation />
+          {children}
+          <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

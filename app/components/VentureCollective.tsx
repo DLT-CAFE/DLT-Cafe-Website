@@ -25,7 +25,7 @@ const programs = [
   },
   {
     title: 'Content Factory',
-    description: 'Crafting compelling content at scale.',
+    description: 'Crafting multi-modal, compelling content at scale.',
     image: '/images/content-factory.jpeg',
     status: 'Coming Soon',
     link: '#'
@@ -79,7 +79,7 @@ export function VentureCollective() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-[23px] font-light text-white/80 max-w-[800px] mx-auto leading-[1.4]"
           >
-            At the heart of DLT Cafe lies four exclusive communities that when combined together turn ideas into reality and the impossible into the possible.
+            At the heart of DLT Cafe lies four communities. When combined together, they turn ideas into reality and the impossible into the possible.
           </motion.p>
         </div>
 
@@ -96,7 +96,6 @@ export function VentureCollective() {
             >
                 <MagicCard
                   className="w-full h-full bg-black/10 backdrop-blur-sm rounded-lg"
-                  containerClassName="w-full h-full"
                 >
                     <div className="relative w-full h-full">
                     <Link href={program.link} className="block w-full h-full">
@@ -160,70 +159,6 @@ export function VentureCollective() {
               </MagicCard>
             </motion.div>
           ))}
-        </div>
-
-        {/* Test Card */}
-        <div className="max-w-md mx-auto">
-          <Card className="border-0 bg-transparent">
-          <div className="relative inset-0 z-0">
-                  <Image
-                    src="/images/influence-academy.png"
-                    alt="Test Card"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 p-2"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-transparent" />
-                </div>
-            <MagicCard gradientColor={theme === "dark" ? "#D2F381" : "#D9D9D955"}>
-              <div className="relative h-[420px] overflow-hidden rounded-lg">
-                {/* Background Image Container - Placed first in the stack */}
-                
-
-                {/* Magic Card Gradient Layer - Middle layer */}
-                <div className="absolute inset-0 z-10 bg-transparent" />
-
-                {/* Content Layer - Top layer */}
-                <div className="relative z-20">
-                  {/* Status Ribbon */}
-                  <div className="absolute top-6 right-6">
-                    <div className="bg-[#D2F381] text-black px-4 py-2 text-sm font-medium rounded-full">
-                      Test Card
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-[28px] font-medium text-white mb-2 font-outfit">
-                      Magic UI Card
-                    </h3>
-                    <p className="text-white/80 text-[17px] font-light mb-6">
-                      This card demonstrates the Magic UI hover effect with our existing design system.
-                    </p>
-                    <div className="inline-flex items-center gap-2 text-[#D2F381] text-sm font-medium group">
-                      Learn more
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                      >
-                        <path
-                          d="M6 12L10 8L6 4"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </MagicCard>
-          </Card>
         </div>
       </div>
     </section>

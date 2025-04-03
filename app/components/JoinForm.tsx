@@ -1,12 +1,129 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { formsService } from '../lib/forms';
 
 export function JoinForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    role: [] as string[],
+    socialLink: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  // Add URL validation function
+  const isValidUrl = (url: string): boolean => {
+    if (!url) return true; // Empty URL is valid (field is optional)
+    try {
+      const urlObj = new URL(url);
+      return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+
+    // Clear error message when user starts typing
+    if (submitStatus.type === 'error') {
+      setSubmitStatus({ type: null, message: '' });
+    }
+  };
+
+  const handleCheckboxChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      role: prev.role.includes(value)
+        ? prev.role.filter(r => r !== value)
+        : [...prev.role, value]
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (formData.role.length === 0) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please select at least one role'
+      });
+      return;
+    }
+
+    // Validate URL if provided
+    if (formData.socialLink && !isValidUrl(formData.socialLink)) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please enter a valid URL starting with http:// or https://'
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await formsService.submitJoinForm({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        role: formData.role.join(', '),
+        experience: 'Interested in joining',
+        linkedin: formData.socialLink
+      });
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: result.message || 'Thank you for your interest! We will be in touch soon.'
+        });
+        
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          role: [],
+          socialLink: ''
+        });
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Something went wrong. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const roles = [
+    'Influencer',
+    'Creator',
+    'Operator',
+    'Dev or Engineer',
+    'Investor',
+    'Other'
+  ];
+
   return (
     <section className="w-full bg-black py-32">
-      <div className="max-w-[1220px] mx-auto px-4">
+      <div className="max-w-[1220px] mx-auto px-4 pt-16">
         {/* Main Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,20 +155,28 @@ export function JoinForm() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-[600px] mx-auto"
         >
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Fields */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <input 
-                  type="text" 
-                  placeholder="First Name" 
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  placeholder="First Name"
+                  required
                   className="w-full bg-transparent border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
                 />
               </div>
               <div>
                 <input 
-                  type="text" 
-                  placeholder="Last Name" 
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  placeholder="Last Name"
+                  required
                   className="w-full bg-transparent border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
                 />
               </div>
@@ -60,8 +185,12 @@ export function JoinForm() {
             {/* Email Field */}
             <div>
               <input 
-                type="email" 
-                placeholder="Email" 
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email"
+                required
                 className="w-full bg-transparent border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
               />
             </div>
@@ -70,47 +199,66 @@ export function JoinForm() {
             <div className="pt-4">
               <p className="text-white mb-3">I am a*</p>
               <div className="flex flex-wrap gap-x-4 gap-y-2">
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Influencer</span>
-                </label>
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Creator</span>
-                </label>
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Operator</span>
-                </label>
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Dev or Engineer</span>
-                </label>
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Investor</span>
-                </label>
-                <label className="flex items-center space-x-2 text-white cursor-pointer">
-                  <input type="checkbox" className="form-checkbox" />
-                  <span>Other</span>
-                </label>
+                {roles.map((role) => (
+                  <label key={role} className="flex items-center space-x-2 text-white cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.role.includes(role)}
+                      onChange={() => handleCheckboxChange(role)}
+                      className="form-checkbox"
+                    />
+                    <span>{role}</span>
+                  </label>
+                ))}
               </div>
             </div>
+
+            {/* Social Link Field */}
+            <div className="pt-2">
+              <p className="text-white/80 text-sm mb-2">Add your LinkedIn, YouTube, GitHub, Instagram, or TikTok profile</p>
+              <input 
+                type="url"
+                name="socialLink"
+                value={formData.socialLink}
+                onChange={handleInputChange}
+                placeholder="https://"
+                pattern="https?://.*"
+                title="Please enter a valid URL starting with http:// or https://"
+                className="w-full bg-transparent border border-white/20 rounded-md px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D2F381]"
+              />
+              <p className="text-white/50 text-xs mt-1">Example: https://linkedin.com/in/yourprofile</p>
+            </div>
+
+            {/* Status Message */}
+            {submitStatus.message && (
+              <div className={`text-sm ${
+                submitStatus.type === 'success' ? 'text-[#D2F381]' : 'text-red-500'
+              }`}>
+                {submitStatus.message}
+              </div>
+            )}
             
             {/* Submit Button */}
             <div className="flex flex-col items-center">
               <button 
-                type="submit" 
-                className="bg-[#D2F381] hover:bg-[#D2F381]/90 text-black font-medium py-3 px-8 rounded w-40 transition-all"
+                type="submit"
+                disabled={isSubmitting}
+                className={`bg-[#D2F381] hover:bg-[#D2F381]/90 text-black font-medium py-3 px-8 rounded w-40 transition-all ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Submit
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
               
               {/* Lightning Bolt Icon */}
               <div className="mt-6">
-                <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.4142 0L0 20.1213H10.1213L8.48528 36L22.6274 15.8787H12.5061L13.4142 0Z" fill="#D2F381"/>
-                </svg>
+                <Image
+                  src="/images/cafebolt.svg"
+                  alt="DLT Cafe Bolt"
+                  width={24}
+                  height={60}
+                  className="mx-auto"
+                />
               </div>
             </div>
           </form>
