@@ -28,6 +28,7 @@ import { SearchInput } from "@/components/posts/search-input";
 import { FeaturedPostsSlider } from "@/app/components/FeaturedPostsSlider";
 import { NewsletterForm } from '@/app/components/NewsletterForm';
 import { Outfit } from 'next/font/google';
+import Image from 'next/image';
 const outfit = Outfit({ subsets: ['latin'] });
 
 import type { Metadata } from "next";
@@ -225,10 +226,11 @@ export default async function Page({
   {/* Texture Background with Elliptical Gradient Overlay */}
   <div className="absolute inset-0 overflow-hidde nmy-80">
     <div className="absolute inset-0 w-full h-full">
-      <img
+      <Image
         src="/images/texture-bg.jpg"
         alt="Background Texture"
-        className="absolute inset-0 w-full h-full object-cover"
+        fill
+        className="object-cover"
         style={{
           objectPosition: 'center center'
         }}

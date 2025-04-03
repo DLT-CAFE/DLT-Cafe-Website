@@ -133,7 +133,7 @@ export function JoinForm() {
           className="mb-16 text-center"
         >
           <h2 className="text-[44px] md:text-[52px] font-medium text-white leading-tight font-outfit text-center max-w-[1100px] mx-auto mb-16">
-            If you're an influencer, entrepreneur, creative, technologist, investor or member of the public and want to help redefine what's possible, build great companies?
+            If you&apos;re an influencer, entrepreneur, creative, technologist, investor or member of the public and want to help redefine what&apos;s possible, build great companies?
           </h2>
           
           <h3 className="text-[36px] font-medium text-white font-outfit mb-6">

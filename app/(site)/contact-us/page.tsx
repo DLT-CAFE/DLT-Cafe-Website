@@ -98,7 +98,7 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <p className="text-[#D2F381] mb-4">Contact Us</p>
               <h1 className={`${outfit.className} text-[84px] font-medium text-white leading-[1.1] mb-8`}>
-                We're open, and we'd love to hear from you.
+                We&apos;re open, and we&apos;d love to hear from you.
               </h1>
             </div>
             

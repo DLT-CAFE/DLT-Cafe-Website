@@ -13,18 +13,18 @@ export function IntroSection() {
             {/* Left Column - Text Content */}
             <div className="w-[50%]">
               <h2 className="text-[52px] font-medium text-white mb-2 leading-tight font-outfit">
-                Incoming Tsunami's & The Rise of the Venture Collective
+                Incoming Tsunami&apos;s & The Rise of the Venture Collective
               </h2>
               <div className="flex flex-col gap-6">
                 <p className="text-[23px] font-extralight text-white leading-[1.4]">
-                Timing is everything, and we've been waiting for this moment for a long time. We've been listening to the signals others ignore — tracking subtle shifts, filtering the noise, and analyzing emergent patterns. <br/><strong>Our thesis is now confirmed: a transformational tsunami isn't coming — it's already here.</strong> <br/><br/> We now stand at the dawn of a new world order, driven by a confluence of breakthrough technologies, disruptive models, and unspoken rules. What comes next is inevitable: an innovation arms race that will lead to the dismantling of legacy systems, the unraveling of giants, the reshaping of culture — and a fundamental reimagining of how we live, work, and play.
+                Timing is everything, and we&apos;ve been waiting for this moment for a long time. We&apos;ve been listening to the signals others ignore — tracking subtle shifts, filtering the noise, and analyzing emergent patterns. <br/><strong>Our thesis is now confirmed: a transformational tsunami isn&apos;t coming — it&apos;s already here.</strong> <br/><br/> We now stand at the dawn of a new world order, driven by a confluence of breakthrough technologies, disruptive models, and unspoken rules. What comes next is inevitable: an innovation arms race that will lead to the dismantling of legacy systems, the unraveling of giants, the reshaping of culture — and a fundamental reimagining of how we live, work, and play.
                 </p>
                 <div>
                   <h2 className="text-[44px] font-medium text-white mb-2 leading-tight font-outfit">
-                    Why We're Here
+                    Why We&apos;re Here
                   </h2>
                   <p className="text-[23px] font-extralight text-white leading-[1.4]">
-                    In response, we're pioneering a new model of business creation — one that's <span className="text-white font-normal">agile, tech-driven, and community-powered</span>. We call it <span className="text-white font-normal">the venture collective</span>: a more collaborative, future-ready approach to designing, building, and scaling tomorrow's most disruptive startups.
+                    In response, we&apos;re pioneering a new model of business creation — one that&apos;s <span className="text-white font-normal">agile, tech-driven, and community-powered</span>. We call it <span className="text-white font-normal">the venture collective</span>: a more collaborative, future-ready approach to designing, building, and scaling tomorrow&apos;s most disruptive startups.
                   </p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export function IntroSection() {
                 <div className="flex flex-col">
                   
                   <div className="flex gap-1 md:gap-2 lg:gap-3 xl:gap-4">
-                    <h1 className="font-semibold">"If ideas</h1>
+                    <h1 className="font-semibold">&ldquo;If ideas</h1>
                     <p className="font-thin">are <span className="font-semibold">nothing</span></p>
                   </div>
                   <div className="flex gap-1 md:gap-2 lg:gap-3 xl:gap-4">
@@ -89,7 +89,7 @@ export function IntroSection() {
                     <h1 className="font-thin">the<span className="font-semibold text-[#d2f381] pl-4">cost</span> </h1>
                   </div>
                   <h1 className="font-thin">to execute <span className="font-semibold text-[#d2f381] pl-1">drops</span>  to</h1>
-                  <h1 className="font-thin">near <span className="font-semibold text-[#d2f381] pl-1">zero</span>? "</h1>
+                  <h1 className="font-thin">near <span className="font-semibold text-[#d2f381] pl-1">zero</span>? &rdquo;</h1>
                 </div>
               </div>
             </div>

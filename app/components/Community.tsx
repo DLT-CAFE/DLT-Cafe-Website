@@ -36,7 +36,7 @@ export function Community() {
               Our inspiration comes from cooperative principles, decentralized organizations and the spirit of collective entrepreneurship.
             </p>
             <p className="text-[23px] font-extralight text-white/80 leading-[1.4]">
-              We've developed a Community Equity Model that ensures every member is not just a contributor but a stakeholder, ensuring that the fruits of our labor are shared equitably.
+              We&apos;ve developed a Community Equity Model that ensures every member is not just a contributor but a stakeholder, ensuring that the fruits of our labor are shared equitably.
             </p>
           </motion.div>
         </div>

@@ -135,11 +135,11 @@ export default function AboutUsPage() {
                 transition={{ duration: 0.5, delay: 1 }}
                 className={`${outfit.className} text-[4.2rem] font-semibold text-white leading-[1.2] mb-6 uppercase tracking-wide`}
               >
-                "WE'RE NEVER<br />
+                &ldquo;WE&apos;RE NEVER<br />
                 GONNA SURVIVE<br />
                 UNLESS, WE GET<br />
                 A LITTLE
-                CRAZY"
+                CRAZY&rdquo;
               </motion.h1>
               
               {/* Attribution */}
@@ -149,7 +149,7 @@ export default function AboutUsPage() {
                 transition={{ duration: 0.5, delay: 1.2 }}
                 className="text-[#D2F381] text-right text-sm italic"
               >
-                -from the song "Crazy" by the artist Seal
+                -from the song &ldquo;Crazy&rdquo; by the artist Seal
               </motion.p>
             </motion.div>
           </div>
@@ -183,7 +183,7 @@ export default function AboutUsPage() {
             variants={fadeInUp}
             className="text-white text-[1.7rem] font-extralight max-w-[900px] mx-auto mb-20"
           >
-            We're assembling a team of bold thinkers, seasoned experts, and emerging 
+            We&apos;re assembling a team of bold thinkers, seasoned experts, and emerging 
             trailblazers, to incubate, nurture and scale the communities and ventures 
             that will be at the forefront of a new emerging economy.
           </motion.p>
@@ -407,7 +407,7 @@ export default function AboutUsPage() {
               Values
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-white text-[1.7rem] font-extralight max-w-[900px] mx-auto mb-20">
-              Our values are what we stand on. They're why we innovate, it's why we support one another, and it's why we refuse to settle until we redefine venture building.
+              Our values are what we stand on. They&apos;re why we innovate, it&apos;s why we support one another, and it&apos;s why we refuse to settle until we redefine venture building.
             </motion.p>
           </motion.div>
 
@@ -459,7 +459,7 @@ export default function AboutUsPage() {
                     </div>
                     <h3 className="text-[#D2F381] text-2xl font-medium mb-2">Innovation</h3>
                     <p className="text-white text-xl font-light">
-                      We don't follow trends; trends follow us. Meaning we set them by staying at the forefront of culture, technological and business.
+                      We don&apos;t follow trends; trends follow us. Meaning we set them by staying at the forefront of culture, technological and business.
                     </p>
                   </div>
                 </div>
@@ -536,9 +536,9 @@ export default function AboutUsPage() {
         <div className="max-w-[1220px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left Column - Text */}
           <motion.div variants={fadeInUp}>
-            <h2 className={`${outfit.className} text-white text-[4.7rem] leading-[1.2] font-semibold mb-6`}>Join Us,<br />We're Better<br />Together.</h2>
+            <h2 className={`${outfit.className} text-white text-[4.7rem] leading-[1.2] font-semibold mb-6`}>Join Us,<br />We&apos;re Better<br />Together.</h2>
             <p className="text-white text-[1.7rem] font-extralight">
-              If you're reading this and if you're ready to be part of a fearless movement, DLT Cafe Ventures is the place to be. Let's disrupt, let's build, and let's do something a little crazy—together.
+              If you&apos;re reading this and if you&apos;re ready to be part of a fearless movement, DLT Cafe Ventures is the place to be. Let&apos;s disrupt, let&apos;s build, and let&apos;s do something a little crazy—together.
             </p>
           </motion.div>
 

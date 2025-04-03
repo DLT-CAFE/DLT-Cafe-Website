@@ -21,7 +21,7 @@ export function Footer() {
               className="mb-6"
             />
             <p className="text-[17px] font-light leading-relaxed text-white/80 mb-6">
-              The world's first community powered venture studio.
+              The world&apos;s first community powered venture studio.
             </p>
             {/* Social Icons */}
             <div className="flex gap-6 mb-8 lg:mb-0">

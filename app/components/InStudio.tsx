@@ -108,8 +108,8 @@ export function InStudio() {
                   <p className="text-[23px] font-light text-white/80 leading-[1.4] mb-6">
                     Our inaugural venture, is set to disrupt the<br />
                     sports/lifestyle and exemplifies our commitment to<br />
-                    our thesis, technology and community. We're super<br />
-                    excited as we're developing a blueprint for the future<br />
+                    our thesis, technology and community. We&apos;re super<br />
+                    excited as we&apos;re developing a blueprint for the future<br />
                     of industry.
                   </p>
                   <p className="text-[23px] font-light text-white/80 leading-[1.4] mb-10">
