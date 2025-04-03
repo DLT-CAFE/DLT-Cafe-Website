@@ -10,13 +10,15 @@ interface LenisProviderProps {
 export function LenisProvider({ children }: LenisProviderProps) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.8,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t + 0.5)),
+      duration: 2.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t + 0.2)),
       smoothWheel: true,
-      wheelMultiplier: 0.85,
-      touchMultiplier: 1.7,
+      wheelMultiplier: 0.7,
+      touchMultiplier: 1.5,
       infinite: false,
-      lerp: 0.1,
+      lerp: 0.08,
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
     });
 
     function raf(time: number) {
